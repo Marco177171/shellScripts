@@ -18,4 +18,8 @@ echo DOCKER ADDED TO APT REPOS. INSTALLING...
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-echo DOCKER INSTALLED.
+echo DOCKER INSTALLED...
+
+sudo chmod 666 /var/run/docker.sock
+
+echo DOCKER SETUP COMPLETE.
