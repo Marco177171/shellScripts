@@ -1,6 +1,6 @@
 # Shell Script Utilities for Server and Microservice Management 🛠️
 
-Welcome to my collection of powerful and versatile shell script utilities designed to streamline server and microservice management tasks. These scripts aim to simplify complex operations, automate routine tasks, and enhance efficiency in managing servers and microservices.
+Hello! Welcome to my collection of powerful and versatile shell script utilities designed to streamline server and microservice management tasks. These scripts aim to simplify complex operations, automate routine tasks, and enhance efficiency in managing servers and microservices.
 
 ## Features we look for :)
 
