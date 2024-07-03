@@ -9,7 +9,7 @@ stop:
 re:	stop $(NAME)
 
 clean:
-	docker compose down --volumes && docker
+	docker compose down --volumes
 
 free:
 	docker rm 

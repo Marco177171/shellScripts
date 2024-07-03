@@ -12,6 +12,8 @@ services:
   app_minio:
     container_name: app_minio
     build: ./minio/
+    ports:
+      - 9000:9000
     env_file:
       - .env
     volumes:
