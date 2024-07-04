@@ -2,5 +2,5 @@ FROM minio/minio
 
 EXPOSE 9000
 
-CMD ["server", "/data"]
+CMD ["minio", "server", "/data", "--address", "0.0.0.0:9000"]
 

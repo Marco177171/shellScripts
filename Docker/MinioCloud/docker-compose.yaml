@@ -1,0 +1,42 @@
+services:
+  # app_postgres:
+  #   container_name: app_postgres
+  #   image: postgres:latest
+  #   ports:
+  #     - 5432:5432
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - app_postgres_volume:/var/lib/postgresql/data/
+
+  minio:
+    build: minio
+    container_name: app_minio
+    ports:
+      - ${MINIO_PORT}:9000
+      - 9001:9001
+    volumes:
+      - app_minio_volume:/data
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - MINIO_DEFAULT_BUCKETS=${MINIO_DEFAULT_BUCKETS}
+
+  # app_minio:
+  #   container_name: app_minio
+  #   build: ./minio
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - ${MINIO_PORT}:9000
+  #     - "9001:9001"
+  #   volumes:
+  #     - app_minio_volume:/data
+  #     - ${PATH_CERT_FILE}:/root/.minio/certs/public.crt:ro
+  #     - ${PATH_CERT_PRIVATE_KEY}:/root/.minio/certs/private.key:ro
+  #   # command: server --console-address ":9001" /data
+  #   restart: always
+
+volumes:
+  app_postgres_volume:
+  app_minio_volume:
