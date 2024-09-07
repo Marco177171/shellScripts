@@ -1,0 +1,9 @@
+services:
+  django:
+    container_name: django
+    build: ./project
+    ports:
+      - 8000:8000
+    # networks:
+    #   - ...
+    restart: always

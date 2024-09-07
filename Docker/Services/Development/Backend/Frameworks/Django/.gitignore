@@ -1,0 +1,5 @@
+venv
+project/db.sqlite
+project/project/__pycache__
+project/project/settings.py
+project/djangoApp/migrations

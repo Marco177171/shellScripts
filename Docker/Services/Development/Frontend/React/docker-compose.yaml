@@ -1,0 +1,16 @@
+services:
+  frontend:
+    # depends_on:
+    #   - ...
+    container_name: react_frontend
+    build: ./frontend
+    image: node:latest
+    ports:
+      - 3000:3000
+    env_file:
+      - ./frontend/.env
+    # networks:
+    #   - ...
+    restart: always
+    stdin_open: true
+    tty: true
