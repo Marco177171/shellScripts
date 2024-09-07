@@ -1,6 +1,6 @@
 #echo insert the name of the volume you want to backup
 
-mount /dev/sdb1 mount_point #change drive if necessary
+mount /dev/sdb1 mount_point #change drive if necessary, create "mount_point" folder
 
 for volume in $(docker volume ls --quiet)
 do

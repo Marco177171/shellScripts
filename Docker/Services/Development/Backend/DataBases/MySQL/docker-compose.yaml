@@ -1,18 +1,14 @@
 services:
   mysql:
-    # depends_on:
-    #   - ...
-    container_name: mysql
-    image: mysql:latest
-    ports:
-      - 3306:3306
     env_file:
       - ./.env
-    # networks:
-    #   - ...
+    container_name: ${MYSQL_CONTAINER_NAME}
+    image: mysql:latest
+    ports:
+      - ${MYSQL_PORT}:3306
     volumes:
-      - mysql_volume:/home/data
+      - ${MYSQL_VOLUME_NAME}:/home/data
     restart: always
 
 volumes:
-  mysql_volume:
+  ${MYSQL_VOLUME_NAME}:

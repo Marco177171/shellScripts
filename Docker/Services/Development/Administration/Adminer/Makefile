@@ -1,4 +1,4 @@
-NAME=MinioCloud
+NAME=Adminer
 
 $(NAME):
 	docker compose up --build -d
