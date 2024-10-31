@@ -1,0 +1,21 @@
+services:
+  openvpn-as:
+    image: openvpn/openvpn-as
+    container_name: openvpn-as
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 943:943
+      - 443:443
+      - 1194:1194/udp
+    volumes:
+      - openVPN_volume:/openvpn
+    restart: always
+    networks:
+      - host # this will bind the docker to your local network. Change for other usecases
+
+volumes:
+  openVPN_volume:
+
+networks:
+  host:
