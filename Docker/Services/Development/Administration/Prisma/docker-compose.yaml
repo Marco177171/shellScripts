@@ -1,0 +1,38 @@
+# version: '3'
+# services:
+#   prisma:
+#     image: prismagraphql/prisma:__LATEST_PRISMA_VERSION__
+#     restart: always
+#     ports:
+#       - '4466:4466'
+#     environment: |
+#       PRISMA_CONFIG:
+#         managementApiSecret: ${MANAGEMENT_API_SECRET}
+#         port: ${PRISMA_SERVER_PORT}
+#         databases:
+#           default:
+#             connector: ${PRISMA_CONNECTOR}
+#             host: ${PRISMA_DATABASE_HOST}
+#             port: ${PRISMA_DATABASE_PORT}
+#             user: ${PRISMA_DATABASE_USER}
+#             password: ${PRISMA_DATABASE_PASSWORD}
+#             connectionLimit: ${PRISMA_CONNECTION_LIMIT}
+
+services:
+  prisma:
+    image: prismagraphql/prisma
+    restart: always
+    ports:
+      - '4466:4466'
+    environment:
+      PRISMA_CONFIG: |
+        managementApiSecret: __YOUR_MANAGEMENT_API_SECRET__
+        port: __YOUR_PRISMA_SERVER_PORT__
+        databases:
+          default:
+            connector: __YOUR_DATABASE_CONNECTOR__
+            host: __YOUR_DATABASE_HOST__
+            port: __YOUR_DATABASE_PORT__
+            user: __YOUR_DATABASE_USER__
+            password: __YOUR_DATABASE_PASSWORD__
+            connectionLimit: __YOUR_CONNECTION_LIMIT__
