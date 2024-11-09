@@ -12,7 +12,4 @@ clean:
 	docker compose down --volumes
 
 free:
-	docker rm 
-
-pure:
-	docker system prune -a
+	docker rm

@@ -1,4 +1,4 @@
-NAME=Adminer
+NAME=FileBrowser
 
 $(NAME):
 	docker compose up --build -d

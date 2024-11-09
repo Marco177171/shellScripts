@@ -1,0 +1,14 @@
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    env_file:
+      - ./.env
+    container_name: filebrowser
+    ports:
+      - ${FILE_BROWSER_PORT}:80
+    volumes:
+      - fileBrowserVolume:/data
+    restart: always
+
+volumes:
+  fileBrowserVolume:
