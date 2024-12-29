@@ -10,5 +10,10 @@ services:
       - fileBrowserVolume:/data
     restart: always
 
-volumes:
+volumes: 
   fileBrowserVolume:
+    driver: local
+    driver_opts:
+      o: "size=${VOLUME_SIZE}"
+      device: tmpfs
+      type: tmpfs

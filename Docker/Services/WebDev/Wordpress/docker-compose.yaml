@@ -1,11 +1,30 @@
 services:
-  adminer:
-    env_file:
-      - ./.env
+
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    restart: always
+    env_file: ./.env
+    environment:
+      MYSQL_DATABASE: ${WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  wordpress:
+    depends_on:
+      - mysql
     container_name: wordpress
     image: wordpress:latest
-    ports:
-      - ${WORDPRESS_PORT}:8080
-    # networks:
-    #   - ...
     restart: always
+    env_file: ./.env
+    ports:
+      - 8080:80
+    volumes:
+      - wordpress:/var/www/html
+
+volumes:
+  wordpress:
+  mysql_data:
