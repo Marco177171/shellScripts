@@ -13,4 +13,3 @@ sudo rm -rf "$INSTALL_DIR/node-$NODE_VERSION-linux-x64"
 sed -i '/node-'$NODE_VERSION'-linux-x64\/bin/d' ~/.profile
 
 echo "Node.js $NODE_VERSION has been uninstalled and the system is clean."
-
