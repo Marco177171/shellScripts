@@ -16,7 +16,6 @@ RUN chown -R lighttpd:lighttpd /var/www/html/wordpress
 RUN rm -rf latest.tar.gz wordpress
 
 COPY lighttpd.conf .
-COPY httpd.conf /etc/apache2
 COPY start_mariadb.sh .
 
 CMD [ "sh", "start_mariadb.sh" ]
