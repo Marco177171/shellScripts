@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN apk update && apk upgrade
-RUN apk add mariadb mariadb-client lighttpd php-mysqli php php-fpm php-cli php-curl php-xml php-json php-zip php-mbstring php-gd php-intl php-cgi wget
+RUN apk add --no-cache openrc mariadb mariadb-client lighttpd php-mysqli php php-fpm php-cli php-curl php-xml php-json php-zip php-mbstring php-gd php-intl php-cgi wget
 
 # WORDPRESS
 RUN wget https://wordpress.org/latest.tar.gz
@@ -16,6 +16,7 @@ RUN chown -R lighttpd:lighttpd /var/www/html/wordpress
 RUN rm -rf latest.tar.gz wordpress
 
 COPY lighttpd.conf .
+COPY httpd.conf /etc/apache2
 COPY start_mariadb.sh .
 
 CMD [ "sh", "start_mariadb.sh" ]
