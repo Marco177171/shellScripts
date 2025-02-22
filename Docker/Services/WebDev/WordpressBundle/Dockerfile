@@ -11,8 +11,8 @@ RUN mkdir -p /var/www/html
 RUN mv wordpress /var/www/html
 COPY wp-config.php /var/www/html/wordpress
 
-RUN chmod -R 755 /var/www/html/wordpress
-RUN chown -R lighttpd:lighttpd /var/www/html/wordpress
+# RUN chmod -R 755 /var/www/html/wordpress
+# RUN chown -R lighttpd:lighttpd /var/www/html/wordpress
 RUN rm -rf latest.tar.gz wordpress
 
 COPY lighttpd.conf .
