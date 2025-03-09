@@ -1,0 +1,47 @@
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    volumes:
+      - db:/var/lib/mysql
+    env_file:
+      - ./.env
+    networks:
+      - nextcloud_net
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/root/redis
+      # - ./redis.conf:/usr/local/etc/redis/redis.conf
+    env_file:
+      - ./.env
+    networks:
+      - nextcloud_net
+
+  app:
+    image: nextcloud
+    restart: always
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud:/var/www/html
+    env_file:
+      - ./.env
+    networks:
+      - nextcloud_net
+
+volumes:
+  nextcloud:
+  db:
+  redis:
+
+networks:
+  nextcloud_net:
