@@ -1,0 +1,17 @@
+services:
+  server:
+    container_name: alpine-ssh-server
+    hostname: alpine
+    build: .
+    volumes:
+      - ssh-homes:/home
+    env_file: ./.env
+    ports:
+      - ${SSH_PORT}:22
+    restart: unless-stopped
+
+volumes:
+  ssh-homes:
+
+networks:
+  alpine-ssh-network:
