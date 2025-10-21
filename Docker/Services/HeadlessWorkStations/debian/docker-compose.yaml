@@ -1,0 +1,16 @@
+services:
+  ws:
+    hostname: debian-ws
+    build: .
+    volumes:
+      - volume:/root
+    env_file: ./.env
+    ports:
+      - ${SSH_PORT}:22
+    restart: unless-stopped
+
+volumes:
+  volume:
+
+networks:
+  debian-ws-net:
