@@ -16,7 +16,7 @@ set textwidth=78
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
 " List chars
-set lcs=tab:>-,trail:�
+set lcs=tab:>-,trail:-
 " Set no-compatible
 set nocp
 " Write the contents of the file
