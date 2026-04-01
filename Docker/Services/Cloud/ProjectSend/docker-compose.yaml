@@ -1,0 +1,29 @@
+services:
+  projectsend:
+    image: lscr.io/linuxserver/projectsend:latest
+    container_name: projectsend
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Etc/UTC
+      MYSQL_HOME: ${MYSQL_HOME}
+      MYSQL_HOST: ${MARIADB_HOSTNAME}
+      MYSQL_PWD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_TCP_PORT: ${MARIADB_PORT}
+      MYSQL_UNIX_PORT: "3306"
+    volumes:
+      - ./config:/config
+      - ./data:/data
+    ports:
+      - "${PROJECT_SEND_PORT}:80"
+    restart: unless-stopped
+  mariadb:
+    image: mariadb:latest
+    container_name: ${MARIADB_HOSTNAME}
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: ${MARIADB_ALLOW_EMPTY_ROOT_PASSWORD} 
+      MARIADB_RANDOM_ROOT_PASSWORD: ${MARIADB_RANDOM_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+    ports:
+      - "${MARIADB_PORT}:3306"
